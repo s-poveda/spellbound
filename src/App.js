@@ -7,7 +7,7 @@ import  UserLoggedInContext from './Context/UserLoggedInContext';
 import ApiContext from './Context/ApiContext';
 import './App.css';
 
-class App extends Component {
+export default class App extends Component {
 
 	state = {
 		spells: {
@@ -28,10 +28,11 @@ class App extends Component {
 		const ApiConVal = {
 			spells: this.state.spells
 		}
+		const UserLoggedInConVal = { loggedIn: true}
 		// <Route exact path='/sign-up' component={SignUp}/>
 		// <Route exact path='/login' component={Login}/>
 			return (
-				<UserLoggedInContext.Provider>
+				<UserLoggedInContext.Provider value={UserLoggedInConVal}>
 				<ApiContext.Provider value={ApiConVal}>
 					<div className="App">
 						<header className="App-header">
@@ -58,5 +59,3 @@ class App extends Component {
 			);
 	}
 }
-
-export default App;
