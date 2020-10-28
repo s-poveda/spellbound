@@ -4,7 +4,7 @@ import './SpellCard.css';
 
 export default function SpellCard() {
 	return (
-		<article className="spell-car">
+		<article className="spell-card">
 			<h3>Each spell has a title</h3>
 			<span className="spell-card-span">
 				<p><b>Characteristic:</b> Value</p>

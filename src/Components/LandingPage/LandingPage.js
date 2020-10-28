@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import ApiContext from '../../Context/ApiContext';
 import SpellList from '../SpellList/SpellList.js';
 import './LandingPage.css';
@@ -12,10 +12,10 @@ export  default class LandingPage extends Component {
 				const { recentlyAdded =[], popular=[] } = spells;
 				//each spell list return a section
 				return (
-					<Fragment>
+					<div className='main-content'>
 						<SpellList spells={recentlyAdded} />
 						<SpellList spells={popular} />
-					</Fragment>
+					</div>
 				);
 			}}
 				</ApiContext.Consumer>
