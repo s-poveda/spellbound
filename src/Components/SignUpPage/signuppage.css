@@ -1,1 +1,33 @@
-.SignUpPage { }
+#signup-form {
+	display: flex;
+	border: 1px solid red;
+	margin: 10px 10%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 200px;
+}
+
+#signup-form input {
+	flex:1;
+	width: 280px;
+	margin-top: 7px;
+	height: 1.8em;
+	border-radius: 3px;
+	border: solid 2px #898989;
+}
+
+input[type='password'] {
+	font-size: 25px;
+}
+
+#signup-form button {
+	flex:1;
+	border: solid 1px #4c4c4c;
+	border-radius: 4px;
+	width: 291px;
+	margin-top: 0.5em;
+	height: 2.2em;
+	font-size: 20px;
+	font-weight: bold;
+}

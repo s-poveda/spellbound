@@ -5,3 +5,9 @@
 .main-content {
 	display: flex;
 }
+
+/* .flex-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+} */

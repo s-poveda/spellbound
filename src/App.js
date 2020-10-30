@@ -38,10 +38,11 @@ export default class App extends Component {
 						<Route exact path='/' component={PageHeader} />
 						<Route exact path='/signup' render={()=> <PageHeader showTitleOnly={true} />} />
 						<Route exact path='/login' render={()=> <PageHeader showTitleOnly={true} />} />
-						<main>
+						<main className="flex-container">
 							<Route exact path='/' component={LandingPage}/>
 							<Route exact path='/signup' component={SignUpPage}/>
 							<Route exact path='/login' component={LoginPage}/>
+							<Route exact path='/users/:userId' component={ProfilePage}/>
 						</main>
 					</div>
 				</ApiContext.Provider>
