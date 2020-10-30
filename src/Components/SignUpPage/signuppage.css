@@ -15,10 +15,7 @@
 	height: 1.8em;
 	border-radius: 3px;
 	border: solid 2px #898989;
-}
-
-input[type='password'] {
-	font-size: 25px;
+	font-size: 17px;
 }
 
 #signup-form button {
