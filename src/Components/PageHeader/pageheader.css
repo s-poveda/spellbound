@@ -1,0 +1,28 @@
+.page-header-title {
+	color: #fff;
+	text-decoration: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 15vh;
+  display: flex;
+  align-items: center;
+	justify-content: space-between;
+  font-size: 30px;
+  color: white;
+}
+
+header > * {
+	flex: 1;
+}
+
+header nav {
+	display: flex;
+}
+
+header nav > div {
+	flex: 1;
+	margin-bottom: 5px;
+	width: 100%;
+}

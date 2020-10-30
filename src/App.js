@@ -1,8 +1,10 @@
 import  React, { Component } from 'react';
-import { Route } from 'react-router';
+import { Route } from 'react-router-dom';
 import LandingPage from './Components/LandingPage/LandingPage';
-// import  SignUp from './Components/SignUp/SignUp';
-// import Login from './Components/Login/Login';
+import PageHeader from  './Components/PageHeader/PageHeader';
+import  SignUpPage from './Components/SignUpPage/SignUpPage';
+import LoginPage from './Components/LoginPage/LoginPage';
+import ProfilePage from './Components/ProfilePage/ProfilePage';
 import  UserLoggedInContext from './Context/UserLoggedInContext';
 import ApiContext from './Context/ApiContext';
 import './App.css';
@@ -29,29 +31,17 @@ export default class App extends Component {
 			spells: this.state.spells
 		}
 		const UserLoggedInConVal = { loggedIn: true}
-		// <Route exact path='/sign-up' component={SignUp}/>
-		// <Route exact path='/login' component={Login}/>
 			return (
 				<UserLoggedInContext.Provider value={UserLoggedInConVal}>
 				<ApiContext.Provider value={ApiConVal}>
 					<div className="App">
-						<header className="App-header">
-							{/* this header will changed based on if user is logged in with Context*/}
-							<h1>
-								SpellBound
-							</h1>
-							<nav>
-								<div>
-									<a href='#/'>Sign in</a>
-								</div>
-								<div>
-									<a href="#/">Sign up +</a>
-								</div>
-							</nav>
-							{/* TODO: Make a section with a short intro to the website*/}
-						</header>
+						<Route exact path='/' component={PageHeader} />
+						<Route exact path='/signup' render={()=> <PageHeader showTitleOnly={true} />} />
+						<Route exact path='/login' render={()=> <PageHeader showTitleOnly={true} />} />
 						<main>
 							<Route exact path='/' component={LandingPage}/>
+							<Route exact path='/signup' component={SignUpPage}/>
+							<Route exact path='/login' component={LoginPage}/>
 						</main>
 					</div>
 				</ApiContext.Provider>
