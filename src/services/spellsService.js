@@ -40,7 +40,7 @@ function getSpellsByUsername(username, page = 1, spellsPerPage = 10) {
 	}
 	fetchHandler(`${API_URL}/users/${username}?limit=${spellsPerPage}&offset=${ spellsPerPage * (page - 1) }`);
 }
-
+// eslint-disable-next-line
 export default {
 	getAllSpells,
 	getSpellById,
