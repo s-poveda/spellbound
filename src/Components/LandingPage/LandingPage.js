@@ -20,7 +20,7 @@ export  default class LandingPage extends Component {
 					</h3>
 					<div className='main-content'>
 						<SpellList spells={allSpells} title='Recently Added'/>
-						{/*<SpellList spells={popular} title='Popular'/>*/}
+						<SpellList spells={allSpells} title='Popular'/>
 					</div>
 					</Fragment>
 				);

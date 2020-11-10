@@ -5,14 +5,14 @@ import './SpellCard.css';
 export default function SpellCard(props) {
 	const { title, description} = props.spell;
 	return (
-		<article className="spell-card">
+		<article className='spell-card'>
 			<h3>{title}</h3>
-			<span className="spell-card-span">
+			<span className='spell-card-span'>
 				<p><b>Characteristic:</b> Value</p>
 				<p><b>Damage Type:</b> Necrotic</p>
 				<p><b>Range:</b> 5ft</p>
 			</span>
-			<p>
+			<p className='spell-card-description'>
 			{description}
 			</p>
 		</article>
