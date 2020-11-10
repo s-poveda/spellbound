@@ -6,7 +6,7 @@ import  SignUpPage from './Components/SignUpPage/SignUpPage';
 import LoginPage from './Components/LoginPage/LoginPage';
 import ProfilePage from './Components/ProfilePage/ProfilePage';
 import  AuthContext from './Context/AuthContext';
-import Api from './api/api';
+import Api from './services/api';
 import ApiContext from './Context/ApiContext';
 import './App.css';
 
