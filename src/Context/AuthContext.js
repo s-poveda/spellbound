@@ -2,5 +2,7 @@ import { createContext } from 'react';
 
 export default createContext({
 	loggedIn: false,
-	token : '',
+	saveAuthToken: ()=>{},
+	clearAuthToken: ()=>{},
+	getAuthToken: ()=>{},
 });

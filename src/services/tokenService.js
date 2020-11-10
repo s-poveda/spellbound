@@ -12,7 +12,7 @@ const tokenService = {
 	},
 	hasAuthToken() {
 		return !!tokenService.getAuthToken();
-	}
+	},
 };
 
 export default tokenService;

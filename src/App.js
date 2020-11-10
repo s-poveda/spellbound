@@ -6,7 +6,8 @@ import  SignUpPage from './Components/SignUpPage/SignUpPage';
 import LoginPage from './Components/LoginPage/LoginPage';
 import ProfilePage from './Components/ProfilePage/ProfilePage';
 import  AuthContext from './Context/AuthContext';
-import Api from './services/spellsService';
+import apiSpellsService from './services/spellsService';
+import apiAuthService from  './services/authService';
 import ApiContext from './Context/ApiContext';
 import './App.css';
 
@@ -26,7 +27,7 @@ export default class App extends Component {
 	}
 
 	componentDidMount() {
-		Api.getAllSpells()
+		apiSpellsService.getAllSpells()
 			.then( spells => {
 				this.setState({ spells: {
 					allSpells: spells,
@@ -48,9 +49,15 @@ export default class App extends Component {
 		const ApiConVal = {
 			spells: {
 				allSpells: this.state.spells.allSpells,
-			}
+			},
+			submitSpell: apiSpellsService.postSpell,
 		};
-		const AuthConVal = { loggedIn: true };
+		const AuthConVal = {
+			loggedIn: apiAuthService.hasAuthToken,
+			saveAuthToken: apiAuthService.saveAuthToken,
+			clearAuthToken: apiAuthService.clearAuthToken,
+			getAuthToken: apiAuthService.getAuthToken,
+		};
 			return (
 				<AuthContext.Provider value={AuthConVal}>
 				<ApiContext.Provider value={ApiConVal}>

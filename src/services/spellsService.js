@@ -38,11 +38,30 @@ function getSpellsByUsername(username, page = 1, spellsPerPage = 10) {
 	if (!spellsPerPage || !page) {
 		throw new Error('page and spellsPerPage must be numbers');
 	}
-	fetchHandler(`${API_URL}/users/${username}?limit=${spellsPerPage}&offset=${ spellsPerPage * (page - 1) }`);
+	fetchHandler(
+		`${API_URL}/users/${username}?limit=${spellsPerPage}&offset=${spellsPerPage *
+			(page - 1)}`
+	);
+}
+
+function postSpell(spell, token) {
+	const body = JSON.stringify({
+		title: spell.title,
+		description: spell.description,
+	});
+	return fetchHandler(`${API_URL}/spells`, {
+		method: 'POST',
+		headers: {
+			Authorization: `Bearer ${token}`,
+			'Content-Type': 'application/json',
+		},
+		body,
+	});
 }
 // eslint-disable-next-line
 export default {
 	getAllSpells,
 	getSpellById,
 	getSpellsByUsername,
-}
+	postSpell,
+};
