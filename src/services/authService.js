@@ -10,8 +10,14 @@ const apiAuthService = {
 			},
 			body,
 		})
-		.then(res => res.json)
-		.then(token=>token);
+		.then(async res => {
+			if (!res.ok){
+				const reason = await res.json();
+				return Promise.reject(reason);
+			}
+			const token = await res.json();
+			return token;
+		});
 	},
 
 	signup(username, password) {
