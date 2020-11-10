@@ -2,15 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './SpellCard.css';
 
-export default function SpellCard() {
+export default function SpellCard(props) {
+	const { title, description} = props.spell;
 	return (
 		<article className="spell-card">
-			<h3>Each spell has a title</h3>
+			<h3>{title}</h3>
 			<span className="spell-card-span">
 				<p><b>Characteristic:</b> Value</p>
 				<p><b>Damage Type:</b> Necrotic</p>
 				<p><b>Range:</b> 5ft</p>
 			</span>
+			<p>
+			{description}
+			</p>
 		</article>
 	);
 }

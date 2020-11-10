@@ -6,6 +6,7 @@ import  SignUpPage from './Components/SignUpPage/SignUpPage';
 import LoginPage from './Components/LoginPage/LoginPage';
 import ProfilePage from './Components/ProfilePage/ProfilePage';
 import  UserLoggedInContext from './Context/UserLoggedInContext';
+import Api from './api/api';
 import ApiContext from './Context/ApiContext';
 import './App.css';
 
@@ -13,22 +14,40 @@ export default class App extends Component {
 
 	state = {
 		spells: {
+			allSpells: [],
 			new : [],
 			popular: [],
 			// 'requested' spells are the response of a search
 			requested: [],
 			// 'selected' is used when user clicks on a specific spell card
-			selected: {}
+			selected: {},
+			error: null,
 		}
 	}
 
 	componentDidMount() {
-		//api req
+		Api.getAllSpells()
+			.then( spells => {
+				this.setState({ spells: {
+					allSpells: spells,
+				}
+			});
+			})
+			.catch(error=> this.setState({ error }))
+	}
+
+	shouldComponentUpdate( _, nextState) {
+		if (nextState.error) {
+			throw nextState.error;
+		}
+		return true;
 	}
 
   render() {
 		const ApiConVal = {
-			spells: this.state.spells
+			spells: {
+				allSpells: this.state.spells.allSpells,
+			}
 		}
 		const UserLoggedInConVal = { loggedIn: true}
 			return (

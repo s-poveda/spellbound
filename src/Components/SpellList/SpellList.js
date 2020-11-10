@@ -8,10 +8,10 @@ export  default class SpellList extends Component {
 	static defaultProps = { spells: []}
 
 	mapPassedSpells() {
-		// return this.props.spells
-		return [{key: 'value'}].map( (spell, i) =>
+
+		return this.props.spells.map( (spell) =>
 		// FIXME: ^^^ this is only basic render smoke test
-		<SpellCard spell={spell} key={i} />)
+		<SpellCard spell={spell} key={spell.id} />)
 	}
 
 	render() {
@@ -26,7 +26,13 @@ export  default class SpellList extends Component {
 }
 
 SpellList.propTypes = {
-	title: PropTypes.string,
+	spells: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.number.isRequired,
+			description: PropTypes.string,
+			title: PropTypes.string.isRequired,
+		})
+	),
 	// spells: PropTypes.object.isRequired
 }
 // TODO: ^^^^^^^ should be changed soon (after creating mock data or getting api up)
