@@ -5,7 +5,7 @@ import PageHeader from  './Components/PageHeader/PageHeader';
 import  SignUpPage from './Components/SignUpPage/SignUpPage';
 import LoginPage from './Components/LoginPage/LoginPage';
 import ProfilePage from './Components/ProfilePage/ProfilePage';
-import  UserLoggedInContext from './Context/UserLoggedInContext';
+import  AuthContext from './Context/AuthContext';
 import Api from './api/api';
 import ApiContext from './Context/ApiContext';
 import './App.css';
@@ -32,6 +32,7 @@ export default class App extends Component {
 					allSpells: spells,
 				}
 			});
+		// TODO: use a 'loading' property in state to display loading spinner
 			})
 			.catch(error=> this.setState({ error }))
 	}
@@ -48,10 +49,10 @@ export default class App extends Component {
 			spells: {
 				allSpells: this.state.spells.allSpells,
 			}
-		}
-		const UserLoggedInConVal = { loggedIn: true}
+		};
+		const AuthConVal = { loggedIn: true };
 			return (
-				<UserLoggedInContext.Provider value={UserLoggedInConVal}>
+				<AuthContext.Provider value={AuthConVal}>
 				<ApiContext.Provider value={ApiConVal}>
 					<div className="App">
 						<Route exact path='/' component={PageHeader} />
@@ -65,7 +66,7 @@ export default class App extends Component {
 						</main>
 					</div>
 				</ApiContext.Provider>
-				</UserLoggedInContext.Provider>
+				</AuthContext.Provider>
 			);
 	}
 }

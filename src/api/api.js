@@ -32,7 +32,17 @@ function getSpellById(id) {
 	return fetchHandler(`${API_URL}/spells/${id}`);
 }
 
+function getSpellsByUsername(username, page = 1, spellsPerPage = 10) {
+	spellsPerPage = Number(spellsPerPage);
+	page = Number(page);
+	if (!spellsPerPage || !page) {
+		throw new Error('page and spellsPerPage must be numbers');
+	}
+	fetchHandler(`${API_URL}/users/${username}?limit=${spellsPerPage}&offset=${ spellsPerPage * (page - 1) }`);
+}
+
 export default {
 	getAllSpells,
-	getSpellById
+	getSpellById,
+	getSpellsByUsername,
 }

@@ -12,7 +12,6 @@ export  default class LandingPage extends Component {
 				// const { recentlyAdded =[], popular=[] } = spells;
 				//each spell list return a section
 				const { allSpells } = spells;
-				console.log(allSpells);
 				return (
 					<Fragment>
 					<h3>
