@@ -28,12 +28,10 @@ export default class LoginPage extends Component {
 		const { username, password } = this.state;
 		authService.login(username.value, password.value)
 		.then( obj => {
-			console.log(obj);
 			tokenService.saveAuthToken(obj.authToken);
 			this.props.history.goBack();
 		})
 		.catch( error=> {
-			console.log(error);
 			this.setState({ error });
 		});
 	}
@@ -44,7 +42,7 @@ export default class LoginPage extends Component {
 				<h2>Log in</h2>
 				<form id='login-form' onSubmit={this.onLoginSubmit}>
 					<input
-						aria-label='Username'
+						aria-label='Type your username here'
 						value={this.state.username.value}
 						name='username'
 						placeholder='Username'
@@ -52,7 +50,8 @@ export default class LoginPage extends Component {
 						type='text'
 					/>
 					<input
-						aria-label='Password'
+						aria-label='type your password here'
+						autoComplete='current-password'
 						value={this.state.password.value}
 						name='password'
 						placeholder='Password'

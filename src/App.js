@@ -5,9 +5,11 @@ import PageHeader from  './Components/PageHeader/PageHeader';
 import  SignUpPage from './Components/SignUpPage/SignUpPage';
 import LoginPage from './Components/LoginPage/LoginPage';
 import ProfilePage from './Components/ProfilePage/ProfilePage';
+import PublicOnlyRoute from './Components/Utils/PublicOnlyRoute';
+import PrivateRoute from './Components/Utils/PrivateRoute';
 import  AuthContext from './Context/AuthContext';
 import apiSpellsService from './services/spellsService';
-import apiAuthService from  './services/authService';
+import tokenService from  './services/tokenService';
 import ApiContext from './Context/ApiContext';
 import './App.css';
 
@@ -38,6 +40,40 @@ export default class App extends Component {
 			.catch(error=> this.setState({ error }))
 	}
 
+	renderPublicOnlyMainRoutes() {
+		return (
+			<>
+			<PublicOnlyRoute exact path='/signup' component={SignUpPage}/>
+			<PublicOnlyRoute exact path='/login' component={LoginPage}/>
+			</>
+		);
+	}
+
+	renderPrivateOnlyRoutes() {
+		return <>
+		<PrivateRoute exact path='/profile' component={ProfilePage} />
+		</>
+	}
+
+	renderMainRoutes() {
+		return (
+			<>
+			{this.renderPublicOnlyMainRoutes()}
+			{this.renderPrivateOnlyRoutes()}
+			<Route exact path='/' component={LandingPage}/>
+			<Route exact path='/users/:userId' component={ProfilePage}/>
+			</>
+		);
+	}
+
+	renderHeader() {
+		return <>
+		<Route exact path='/' component={PageHeader} />
+		<Route exact path='/signup' render={()=> <PageHeader showTitleOnly={true} />} />
+		<Route exact path='/login' render={()=> <PageHeader showTitleOnly={true} />} />
+		</>
+	}
+
 	shouldComponentUpdate( _, nextState) {
 		if (nextState.error) {
 			throw nextState.error;
@@ -52,24 +88,20 @@ export default class App extends Component {
 			},
 			submitSpell: apiSpellsService.postSpell,
 		};
+
 		const AuthConVal = {
-			loggedIn: apiAuthService.hasAuthToken,
-			saveAuthToken: apiAuthService.saveAuthToken,
-			clearAuthToken: apiAuthService.clearAuthToken,
-			getAuthToken: apiAuthService.getAuthToken,
+			loggedIn: tokenService.hasAuthToken,
+			logOut: tokenService.clearAuthToken,
+			saveAuthToken: tokenService.saveAuthToken,
+			getAuthToken: tokenService.getAuthToken,
 		};
 			return (
 				<AuthContext.Provider value={AuthConVal}>
 				<ApiContext.Provider value={ApiConVal}>
 					<div className="App">
-						<Route exact path='/' component={PageHeader} />
-						<Route exact path='/signup' render={()=> <PageHeader showTitleOnly={true} />} />
-						<Route exact path='/login' render={()=> <PageHeader showTitleOnly={true} />} />
+						{this.renderHeader()}
 						<main className="flex-container">
-							<Route exact path='/' component={LandingPage}/>
-							<Route exact path='/signup' component={SignUpPage}/>
-							<Route exact path='/login' component={LoginPage}/>
-							<Route exact path='/users/:userId' component={ProfilePage}/>
+							{this.renderMainRoutes()}
 						</main>
 					</div>
 				</ApiContext.Provider>

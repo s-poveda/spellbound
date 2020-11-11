@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 
 export default createContext({
-	loggedIn: false,
+	loggedIn: ()=>{},
 	saveAuthToken: ()=>{},
-	clearAuthToken: ()=>{},
+	logOut: ()=>{},
 	getAuthToken: ()=>{},
 });

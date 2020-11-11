@@ -5,7 +5,7 @@ export default class ProfilePage extends Component {
   render() {
     return (
       <div>
-			
+			shows
 			</div>
     );
   }
