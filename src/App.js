@@ -1,14 +1,19 @@
 import  React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+
 import LandingPage from './Components/LandingPage/LandingPage';
 import PageHeader from  './Components/PageHeader/PageHeader';
 import  SignUpPage from './Components/SignUpPage/SignUpPage';
 import LoginPage from './Components/LoginPage/LoginPage';
 import ProfilePage from './Components/ProfilePage/ProfilePage';
+import CreateSpellPage from './Components/CreateSpellPage/CreateSpellPage';
+
 import PublicOnlyRoute from './Components/Utils/PublicOnlyRoute';
 import PrivateRoute from './Components/Utils/PrivateRoute';
+
 import  AuthContext from './Context/AuthContext';
 import ApiContext from './Context/ApiContext';
+
 import spellsService from './services/spellsService';
 import usersService from './services/usersService'
 import tokenService from  './services/tokenService';
@@ -64,6 +69,7 @@ export default class App extends Component {
 	renderPrivateOnlyRoutes() {
 		return <>
 		<PrivateRoute exact path='/profile' component={ProfilePage} />
+		<PrivateRoute exact path='/new' component={CreateSpellPage} />
 		</>
 	}
 

@@ -29,6 +29,9 @@ export default function PageHeader(props) {
 										<Link to='/profile'>My Profile</Link>
 									</div>
 									<div>
+									<Link to='/new'>New Spell+</Link>
+									</div>
+									<div>
 										<Link to='/' onClick={logOut}>Log out</Link>
 									</div>
 								</>
