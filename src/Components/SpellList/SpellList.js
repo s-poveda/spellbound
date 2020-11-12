@@ -10,15 +10,15 @@ export  default class SpellList extends Component {
 	mapPassedSpells() {
 
 		return this.props.spells.map( (spell) =>
-		// FIXME: ^^^ this is only basic render smoke test
 		<SpellCard spell={spell} key={spell.id} />)
 	}
 
 	render() {
 		const mappedSpells = this.mapPassedSpells();
+		const { title } = this.props;
 		return (
 			<section className='main-content-list'>
-				<h2>{this.props.title}</h2>
+				<h2>{title}</h2>
 				{mappedSpells}
 			</section>
 		);
@@ -33,6 +33,4 @@ SpellList.propTypes = {
 			title: PropTypes.string.isRequired,
 		})
 	),
-	// spells: PropTypes.object.isRequired
 }
-// TODO: ^^^^^^^ should be changed soon (after creating mock data or getting api up)

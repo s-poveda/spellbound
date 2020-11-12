@@ -8,9 +8,10 @@ import ProfilePage from './Components/ProfilePage/ProfilePage';
 import PublicOnlyRoute from './Components/Utils/PublicOnlyRoute';
 import PrivateRoute from './Components/Utils/PrivateRoute';
 import  AuthContext from './Context/AuthContext';
-import apiSpellsService from './services/spellsService';
-import tokenService from  './services/tokenService';
 import ApiContext from './Context/ApiContext';
+import spellsService from './services/spellsService';
+import usersService from './services/usersService'
+import tokenService from  './services/tokenService';
 import './App.css';
 
 export default class App extends Component {
@@ -18,26 +19,37 @@ export default class App extends Component {
 	state = {
 		spells: {
 			allSpells: [],
-			new : [],
-			popular: [],
+			// new : [],
+			// popular: [],
+			owned: [],
 			// 'requested' spells are the response of a search
 			requested: [],
 			// 'selected' is used when user clicks on a specific spell card
 			selected: {},
-			error: null,
-		}
+		},
+		error: null,
 	}
 
-	componentDidMount() {
-		apiSpellsService.getAllSpells()
+	async componentDidMount() {
+		// TODO: use a 'loading' property in state to display loading spinner
+		await spellsService.getAllSpells()
 			.then( spells => {
 				this.setState({ spells: {
 					allSpells: spells,
 				}
 			});
-		// TODO: use a 'loading' property in state to display loading spinner
 			})
-			.catch(error=> this.setState({ error }))
+			.catch(error=> this.setState({ error }));
+
+			if (tokenService.hasAuthToken()) {
+				const {sub: username} = JSON.parse(atob(tokenService.getAuthToken().split('.')[1]))
+				usersService.getUserProfile(username)
+				.then( data => {
+					const spells = Object.assign({}, this.state.spells);
+					spells.owned = data.spells;
+					this.setState({ spells });
+				});
+			}
 	}
 
 	renderPublicOnlyMainRoutes() {
@@ -68,9 +80,9 @@ export default class App extends Component {
 
 	renderHeader() {
 		return <>
-		<Route exact path='/' component={PageHeader} />
 		<Route exact path='/signup' render={()=> <PageHeader showTitleOnly={true} />} />
 		<Route exact path='/login' render={()=> <PageHeader showTitleOnly={true} />} />
+		<Route path='/' component={PageHeader} />
 		</>
 	}
 
@@ -86,7 +98,8 @@ export default class App extends Component {
 			spells: {
 				allSpells: this.state.spells.allSpells,
 			},
-			submitSpell: apiSpellsService.postSpell,
+			submitSpell: spellsService.postSpell,
+			getUserProfile: usersService.getUserProfile,
 		};
 
 		const AuthConVal = {
