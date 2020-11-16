@@ -1,14 +1,26 @@
 .spell-card {
 	border: 1px solid green;
+	cursor: pointer;
+}
+.spell-card + .spell-card {
+	margin-top: 12px;
 }
 
-.spell-card-span {
+.spell-card-section {
 	display: flex;
+	flex-direction: row;
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
 
-.spell-card-span > p {
+.spell-card-section > p {
 		padding-left: 1.5em;
 		padding-right: 1.5em;
+		width: 100%;
+}
+
+.spell-card-author {
+	color: #000;
+	text-decoration: none;
+	font-weight: bold;
 }

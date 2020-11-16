@@ -1,5 +1,5 @@
 import  React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import LandingPage from './Components/LandingPage/LandingPage';
 import PageHeader from  './Components/PageHeader/PageHeader';
@@ -79,17 +79,17 @@ export default class App extends Component {
 			{this.renderPublicOnlyMainRoutes()}
 			{this.renderPrivateOnlyRoutes()}
 			<Route exact path='/' component={LandingPage}/>
-			<Route exact path='/users/:userId' component={ProfilePage}/>
+			<Route exact path='/users/:username' component={ProfilePage}/>
 			</>
 		);
 	}
 
 	renderHeader() {
-		return <>
+		return <Switch>
 		<Route exact path='/signup' render={()=> <PageHeader showTitleOnly={true} />} />
 		<Route exact path='/login' render={()=> <PageHeader showTitleOnly={true} />} />
 		<Route path='/' component={PageHeader} />
-		</>
+		</Switch>
 	}
 
 	shouldComponentUpdate( _, nextState) {

@@ -19,6 +19,7 @@ header > * {
 
 header nav {
 	display: flex;
+	flex: 1;
 }
 
 header nav > div {

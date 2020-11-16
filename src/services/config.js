@@ -10,17 +10,16 @@ class ApiError extends Error {
 
 export function fetchHandler(...args) {
 	return fetch(...args)
-		.then(res => {
-			if (!res.ok) {
-				throw new ApiError(res.message);
+		.then(async res => {
+			try {
+				if (!res.ok) {
+					const data = await res.json();
+					throw new ApiError(data.message);
+				}
+				if (res.status === 204) return {};
+				return await res.json();
+			} catch (e) {
+				throw new ApiError(e.message);
 			}
-			if (res.status === 204) return {};
-			return res.json();
-		})
-		.then(data => {
-			return data;
-		})
-		.catch(e => {
-			throw new ApiError(e.message);
 		});
 }

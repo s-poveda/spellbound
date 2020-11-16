@@ -38,7 +38,7 @@ export default function PageHeader(props) {
 							) : (
 								<>
 									<div>
-										<Link to='/login'>Sign in</Link>
+										<Link to='/login'>Login</Link>
 									</div>
 									<div>
 										<Link to='/signup'>Sign up +</Link>

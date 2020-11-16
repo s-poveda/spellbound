@@ -12,12 +12,11 @@ function	getUserProfile(username, page = 1, spellsPerPage = 10) {
 	}
 
 function	getOwnProfile() {
-		//split the token on "." (periods). parse the payload, and take the subject key as username
-		const username = JSON.parse(atob(tokenService.getAuthToken().split('.')[1])).sub;
+		const username = tokenService.getPayload().sub;
 		return getUserProfile(username);
 	}
 
-
+// eslint-disable-next-line
 export default {
 	getUserProfile,
 	getOwnProfile,

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import authService from '../../services/authService';
 import './signuppage.css';
 
 export default class SignUpPage extends Component {
@@ -15,20 +16,41 @@ export default class SignUpPage extends Component {
 			touched: false,
 			value: '',
 		},
+		error: null,
 	};
+
+	validatePassword = () => {
+		if (!this.state.confirmPassword.touched) throw new Error('Please confirm your password');
+		if (this.state.password.value.length < 8 || this.state.password.value.length > 72) throw new Error('Your password must be between 8 and 72 characters');
+		if (this.state.password.value !== this.state.confirmPassword.value) throw new Error('Passwords must match');
+	}
 
 	onInputChange = ev => {
 		const newState = Object.assign({}, this.state);
 		newState[ev.target.name].value = ev.target.value;
+		newState[ev.target.name].touched = true;
 		this.setState({ newState });
-	};
+	}
+
+	onSubmit = async ev => {
+		ev.preventDefault();
+		try {
+			// validation will throw if password is invalid
+			this.validatePassword();
+			await authService.signup(this.state.username.value, this.state.password.value);
+			this.props.history.goBack();
+		} catch (error) {
+			console.log(error);
+			this.setState({ error });
+		}
+	}
 
 	render() {
 		return (
 			<>
 				<h2>Sign Up</h2>
 
-				<form id='signup-form'>
+				<form id='signup-form' onSubmit={this.onSubmit}>
 					<input
 						onChange={this.onInputChange}
 						value={this.state.username.value}

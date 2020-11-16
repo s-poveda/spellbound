@@ -16,7 +16,14 @@ export default class ProfilePage extends Component {
 	async componentDidMount() {
 		try {
 			this.setState({ loading: true });
-			const data = await usersService.getOwnProfile();
+			let data = null;
+
+			if (this.props.match.path === '/profile') {
+				data = await usersService.getOwnProfile();
+			} else {
+				data = await usersService.getUserProfile(this.props.match.params.username);
+			}
+
 			const state = Object.assign({}, this.state, { loading: false });
 			state.spells.owned = data.spells;
 			state.userDetails = data.userDetails;
@@ -28,9 +35,9 @@ export default class ProfilePage extends Component {
 
 	renderUserDetails() {
 		return (
-			<div>
-
-			</div>
+			<section>
+				<h2>{this.state.userDetails.username}</h2>
+			</section>
 		);
 	}
 
@@ -39,7 +46,7 @@ export default class ProfilePage extends Component {
     return (
 			<>
 				{this.renderUserDetails()}
-					<SpellList title='Your Creations' spells={spells}/>
+				<SpellList title={(this.props.match.path === '/profile') ? 'Your Creations' : 'Created Spells'} spells={spells}/>
 			</>
     );
   }

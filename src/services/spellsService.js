@@ -1,4 +1,6 @@
 import { API_URL, fetchHandler } from './config';
+import tokenService from './tokenService';
+
 const spellsService = {
 
 	getAllSpells(offset = 0) {
@@ -7,11 +9,13 @@ const spellsService = {
 	getSpellById(id) {
 		return fetchHandler(`${API_URL}/spells/${id}`);
 	},
-	postSpell(spell, token) {
+	postSpell(spell) {
 		const body = JSON.stringify({
 			title: spell.title,
 			description: spell.description,
+			optionalFields: spell.optionalFields,
 		});
+		const token = tokenService.getAuthToken();
 		return fetchHandler(`${API_URL}/spells`, {
 			method: 'POST',
 			headers: {

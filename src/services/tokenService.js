@@ -13,6 +13,10 @@ const tokenService = {
 	hasAuthToken() {
 		return !!tokenService.getAuthToken();
 	},
+	//split the token on "." (periods), parses and returns the payload
+	getPayload() {
+		return JSON.parse(atob(tokenService.getAuthToken().split('.')[1]));
+	}
 };
 
 export default tokenService;
