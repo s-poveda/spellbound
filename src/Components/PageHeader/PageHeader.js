@@ -20,7 +20,7 @@ export default function PageHeader(props) {
 					<header className='App-header'>
 						{/* this header will changed based on if user is logged in with Context*/}
 						<Link className='page-header-title' to='/'>
-							<h1>SpellBound</h1>
+							<h1>SpellRidge</h1>
 						</Link>
 						<nav>
 							{loggedIn() ? (
