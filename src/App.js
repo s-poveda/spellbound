@@ -7,6 +7,7 @@ import  SignUpPage from './Components/SignUpPage/SignUpPage';
 import LoginPage from './Components/LoginPage/LoginPage';
 import ProfilePage from './Components/ProfilePage/ProfilePage';
 import CreateSpellPage from './Components/CreateSpellPage/CreateSpellPage';
+import SpellPage from './Components/SpellPage/SpellPage';
 
 import PublicOnlyRoute from './Components/Utils/PublicOnlyRoute';
 import PrivateRoute from './Components/Utils/PrivateRoute';
@@ -80,6 +81,7 @@ export default class App extends Component {
 			{this.renderPrivateOnlyRoutes()}
 			<Route exact path='/' component={LandingPage}/>
 			<Route exact path='/users/:username' component={ProfilePage}/>
+			<Route exact path='/spells/:spellId' component={SpellPage} />
 			</>
 		);
 	}
@@ -106,6 +108,7 @@ export default class App extends Component {
 			},
 			submitSpell: spellsService.postSpell,
 			getUserProfile: usersService.getUserProfile,
+			getSpell: spellsService.getSpell,
 		};
 
 		const AuthConVal = {

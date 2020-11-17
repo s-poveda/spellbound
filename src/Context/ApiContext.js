@@ -13,5 +13,6 @@ export default createContext({
 	submitSpell: () => {},
 	deleteSpell: () => {},
 	updateSpell: () => {},
+	getSpell: () => {},
 	getUserProfile: () => {},
 });
