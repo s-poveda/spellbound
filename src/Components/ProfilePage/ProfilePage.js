@@ -14,6 +14,7 @@ export default class ProfilePage extends Component {
 	}
 
 	async componentDidMount() {
+		// TODO: find way to get this from context
 		try {
 			this.setState({ loading: true });
 			let data = null;

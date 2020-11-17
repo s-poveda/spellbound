@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import SpellCard from '../SpellCard/SpellCard';
 
 import spellsService from '../../services/spellsService';
 
