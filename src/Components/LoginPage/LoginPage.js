@@ -39,9 +39,10 @@ export default class LoginPage extends Component {
 	render() {
 		return (
 			<div>
-				<h2>Log in</h2>
+				<h2 className='login-title'>Log in</h2>
 				<form id='login-form' onSubmit={this.onLoginSubmit}>
 					<input
+						autoComplete='username'
 						aria-label='Type your username here'
 						value={this.state.username.value}
 						name='username'

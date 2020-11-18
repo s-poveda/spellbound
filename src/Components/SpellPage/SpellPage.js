@@ -22,7 +22,7 @@ export default class SpellPage extends Component {
 	}
 
   render() {
-		const { title, description, author = {} } = this.state.spell;
+		const { id,title, description, author = {} } = this.state.spell;
     return (
 			<>
 			<article className='spell-page'>
@@ -37,6 +37,7 @@ export default class SpellPage extends Component {
 					<p><b>Range:</b> 5ft</p>
 				</section>
 			<p>{description}</p>
+			<div><Link to={`/spells/${id}`}>Copy Link</Link></div>
 				</article>
 				<section>
 					{/*// TODO: create comments*/}

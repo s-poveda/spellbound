@@ -24,6 +24,14 @@ export default class CreateSpellPage extends Component {
 
 	renderOptionalFields() {
 		// TODO: create optinal fields.
+		return (
+			<>
+				<div>
+					<input/>
+					<input/>
+				</div>
+			</>
+		);
 	}
 
   render() {

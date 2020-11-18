@@ -1,5 +1,4 @@
 .spell-card {
-	border: 1px solid green;
 	cursor: pointer;
 }
 .spell-card + .spell-card {
@@ -19,7 +18,7 @@
 		width: 100%;
 }
 
-.spell-card-author {
+.spell-card a {
 	color: #000;
 	text-decoration: none;
 	font-weight: bold;

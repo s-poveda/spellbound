@@ -1,20 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Fondamento:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+.App-header {
+	background-color: #660000;
+	min-height: 15vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 30px;
+	color: white;
+}
+
 .page-header-title {
 	color: #fff;
 	text-decoration: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 15vh;
-  display: flex;
-  align-items: center;
-	justify-content: space-between;
-  font-size: 30px;
-  color: white;
-}
-
-header > * {
-	flex: 1;
+	font-family: 'Dancing Script', cursive;
+	flex: 0.6;
 }
 
 header nav {
@@ -30,4 +31,18 @@ header nav > div {
 
 a {
 	color: #fff;
+	text-decoration: none;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }

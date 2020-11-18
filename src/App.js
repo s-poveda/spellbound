@@ -1,5 +1,7 @@
 import  React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import useIdle from 'react-use-idle';
+
 
 import LandingPage from './Components/LandingPage/LandingPage';
 import PageHeader from  './Components/PageHeader/PageHeader';
@@ -48,7 +50,10 @@ export default class App extends Component {
 			.catch(error=> this.setState({ error }));
 
 			if (tokenService.hasAuthToken()) {
-				const {sub: username} = JSON.parse(atob(tokenService.getAuthToken().split('.')[1]))
+				const {sub: username, exp} = tokenService.getPayload();
+				if (new Date(exp) < new Date()) {
+					tokenService.clearAuthToken();
+				}
 				usersService.getUserProfile(username)
 				.then( data => {
 					const spells = Object.assign({}, this.state.spells);

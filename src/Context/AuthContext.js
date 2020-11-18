@@ -6,3 +6,5 @@ export default createContext({
 	logOut: ()=>{},
 	getAuthToken: ()=>{},
 });
+
+// TODO: implement a timer for authToken. it expires every hour

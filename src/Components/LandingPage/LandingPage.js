@@ -14,7 +14,7 @@ export  default class LandingPage extends Component {
 				const { allSpells } = spells;
 				return (
 					<Fragment>
-					<h3>
+					<h3 className='landing-page-description'>
 						Your one stop for creating and sharing custom spell ideas for any game!
 					</h3>
 					<div className='main-content'>

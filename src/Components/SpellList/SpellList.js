@@ -19,7 +19,9 @@ export  default class SpellList extends Component {
 		return (
 			<section className='main-content-list'>
 				<h2>{title}</h2>
+				<hr/>
 				{mappedSpells}
+				<hr/>
 			</section>
 		);
 	}

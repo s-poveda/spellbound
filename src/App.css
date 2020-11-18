@@ -6,8 +6,11 @@
 	display: flex;
 	justify-content: space-around;
 	flex-direction: column;
-}
 
+}
+main {
+background: #f4eea9;
+}
 @media all and (min-width: 900px) {
 
 	.main-content {

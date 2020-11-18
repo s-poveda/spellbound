@@ -1,6 +1,10 @@
+.signup-title {
+	margin-top: 0;
+	padding-top: 10px;
+}
+
 #signup-form {
 	display: flex;
-	border: 1px solid red;
 	margin: 10px 10%;
 	flex-direction: column;
 	justify-content: center;

@@ -50,7 +50,7 @@ export default class SignUpPage extends Component {
 	render() {
 		return (
 			<>
-				<h2>Sign Up</h2>
+				<h2 className='signup-title'>Sign Up</h2>
 
 				<form id='signup-form' onSubmit={this.onSubmit}>
 					<input

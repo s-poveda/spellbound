@@ -1,5 +1,7 @@
 .main-content-list {
 	margin: 10px 5%;
-	border: 1px solid red;
 	flex: 1;
+}
+hr {
+	border: 1px solid #ccc;
 }

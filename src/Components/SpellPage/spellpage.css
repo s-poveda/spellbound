@@ -7,3 +7,13 @@
 .spell-page aside {
 	border:1px solid blue;
 }
+
+.spell-details-section {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.spell-details-section > p+p {
+	margin-left: 10px;
+}
