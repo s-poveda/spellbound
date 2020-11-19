@@ -8,15 +8,15 @@ export default class PageHeader extends React.Component {
 		showingNav: false,
 	};
 
-	openNav= () => {
+	openNav = () => {
 		this.setState({ showingNav: true });
 		document.getElementById('sidenav').style.width = '250px';
-	}
+	};
 
-	closeNav= () => {
+	closeNav = () => {
 		this.setState({ showingNav: false });
 		document.getElementById('sidenav').style.width = '0px';
-	}
+	};
 
 	render() {
 		if (this.props.showTitleOnly === true)
@@ -37,34 +37,28 @@ export default class PageHeader extends React.Component {
 							<Link className='page-header-title' to='/'>
 								<h1>SpellRidge</h1>
 							</Link>
+							<button className='open-nav' id='open-nav' onClick={this.openNav}>
+							&#9776;
+							</button>
 							<nav>
-								<button className='open-nav' onClick={this.openNav}>&#9776;</button>
 								<section className='sidenav' id='sidenav'>
-									<button  className='closenav' onClick={this.closeNav}>&times;</button>
-								{loggedIn() ? (
+									<button className='closenav' onClick={this.closeNav}>
+										&times;
+									</button>
+									{loggedIn() ? (
 										<>
-										<div>
 											<Link to='/profile'>My Profile</Link>
-										</div>
-										<div>
 											<Link to='/new'>New Spell+</Link>
-										</div>
-										<div>
 											<Link to='/' onClick={logOut}>
 												Log out
 											</Link>
-										</div>
 										</>
-								) : (
-									<>
-										<div>
+									) : (
+										<>
 											<Link to='/login'>Login</Link>
-										</div>
-										<div>
 											<Link to='/signup'>Sign up +</Link>
-										</div>
-									</>
-								)}
+										</>
+									)}
 								</section>
 							</nav>
 							{/* TODO: Make a section with a short intro to the website*/}

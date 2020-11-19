@@ -1,1 +1,48 @@
-.CreateSpellPage { }
+.create-spell-title {
+	margin-top: 0;
+	padding-top: 10px;
+}
+
+#create-form {
+	margin: 10px 10%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#create-form button {
+
+}
+
+#create-form > * {
+	margin-top: 8px;
+	margin-bottom: 4px;
+}
+
+#create-form input {
+	width: 280px;
+	margin-top: 7px;
+	height: 1.5em;
+	border-radius: 3px;
+	border: solid 2px #898989;
+	font-size: 17px;
+}
+
+#create-form textarea {
+	flex: 3;
+	width: 280px;
+	height: 5em;
+}
+
+.optional-pair {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.optional-pair input {
+	flex: 1;
+	max-width: 170px;
+}

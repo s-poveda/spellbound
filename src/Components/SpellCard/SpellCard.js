@@ -23,10 +23,8 @@ export default class SpellCard extends React.Component {
 
 // FIXME: make copy work
 	copyToClipboard = (ev) => {
-		const a = $(ev.target).focus();
-		a.select();
-		document.execCommand('copy');
-		console.log(a,window.location.href);
+		// document.execCommand('copy', true, 'asdfaslaslasdfkljasdfjl;');
+		// console.log(window.location.href);
 	}
 
 	render () {
@@ -46,7 +44,7 @@ export default class SpellCard extends React.Component {
 					{description}
 					</p>
 					<div><Link to={`/users/${author.username}`} className='spell-card-author'>Created by {author.username}</Link></div>
-					<button className='copy-button' onClick={this.copyToClipboard} url={`${window.hostname}/spells/${id}`}>Copy Link</button>
+					{/*<button className='copy-button' onClick={this.copyToClipboard} url={`${window.hostname}/spells/${id}`}>Copy Link</button>*/}
 					</>
 				}
 			</article>
