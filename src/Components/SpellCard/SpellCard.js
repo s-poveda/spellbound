@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import $ from 'jquery';
 import './SpellCard.css';
 
 export default class SpellCard extends React.Component {
@@ -11,7 +10,7 @@ export default class SpellCard extends React.Component {
 	}
 
 	onclick = (ev) =>{
-			if (Object.values(ev.target.classList).includes('copy-button')) return null;
+			if (ev.target.classList.contains('copy-button')) return null;
 		this.setState({ expanded: !this.state.expanded });
 	}
 
@@ -22,10 +21,9 @@ export default class SpellCard extends React.Component {
 	}
 
 // FIXME: make copy work
-	copyToClipboard = (ev) => {
-		// document.execCommand('copy', true, 'asdfaslaslasdfkljasdfjl;');
-		// console.log(window.location.href);
-	}
+	// copyToClipboard = (ev) => {
+	// 	navigator.clipboard
+	// }
 
 	render () {
 		const { id, title, description, author} = this.props.spell;

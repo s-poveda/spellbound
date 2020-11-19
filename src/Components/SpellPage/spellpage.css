@@ -1,11 +1,14 @@
-.SpellPage { }
+.spell-title {
+	margin-top: 0;
+	padding-top: 10px;
+}
 
 .spell-page a {
  		color: inherit;
 }
 
 .spell-page aside {
-	border:1px solid blue;
+
 }
 
 .spell-details-section {

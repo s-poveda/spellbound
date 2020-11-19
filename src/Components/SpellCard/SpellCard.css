@@ -1,6 +1,10 @@
 .spell-card {
 	cursor: pointer;
+	background: #009eb2;
+	border-radius: 5px;
+	padding-bottom: 8px;
 }
+
 .spell-card + .spell-card {
 	margin-top: 12px;
 }
@@ -19,7 +23,7 @@
 }
 
 .spell-card a {
-	color: #000;
+	color: inherit;
 	text-decoration: none;
 	font-weight: bold;
 }

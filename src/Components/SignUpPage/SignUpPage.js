@@ -19,13 +19,16 @@ export default class SignUpPage extends Component {
 		error: null,
 	};
 
+	usernameRef = React.createRef();
+	passwordRef = React.createRef();
+
 	validatePassword = () => {
 		if (!this.state.username.touched || !this.state.password.touched) throw new Error('A username and password is required.')
 		if (!this.state.confirmPassword.touched) throw new Error('Please confirm your password');
 		if (this.state.password.value.length < 8 || this.state.password.value.length > 72) throw new Error('Your password must be between 8 and 72 characters');
 		if (this.state.password.value !== this.state.confirmPassword.value) throw new Error('Passwords must match');
-		if (/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/.test(this.state.password.value))
-			throw new Error('Your password must contain at least one of the following:\rUppercase\rlowercase\rNumber\rSpecial characters (!, &, *, etc.)')
+		if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/.test(this.state.password.value))
+			throw new Error('Your password must contain at least one of all the following:\nUppercase\nlowercase\nNumber\nSpecial characters (!, &, *, etc.)')
 	}
 
 	onInputChange = ev => {
@@ -80,14 +83,13 @@ export default class SignUpPage extends Component {
 						placeholder='Confirm Your Password'
 						type='password'
 					/>
-					{!!this.state.error &&
-					<div id='error-message'>
-						<p>{this.state.error.message}</p>
-					</div>
-					}
-
 					<button>Sign up</button>
 				</form>
+				{!!this.state.error &&
+					<div id='error-message'>
+					<p>{this.state.error.message}</p>
+					</div>
+				}
 			</>
 		);
 	}

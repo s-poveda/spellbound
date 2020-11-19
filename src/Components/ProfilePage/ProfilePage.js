@@ -37,7 +37,7 @@ export default class ProfilePage extends Component {
 	renderUserDetails() {
 		return (
 			<section>
-				<h2>{this.state.userDetails.username}</h2>
+				<h2 className='user-title'>{this.state.userDetails.username}</h2>
 			</section>
 		);
 	}

@@ -10,7 +10,7 @@
 }
 main {
 	background: #f4eea9;
-	min-height: 100vh;
+	min-height: calc(100vh - var(--header-height));
 }
 @media all and (min-width: 900px) {
 

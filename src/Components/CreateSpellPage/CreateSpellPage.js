@@ -46,12 +46,15 @@ export default class CreateSpellPage extends Component {
 					<>
 					<h2 className='create-spell-title'>Create</h2>
 					<form onSubmit={this.submitSpell} id='create-form'>
+					<div>
 						<input
+							className='spell-title-input'
 							aria-label='spell title'
 							placeholder='Spell Title'
 							name='title'
 							type='text'
 						/>
+						</div>
 						<textarea
 							className=''
 							aria-label='spell description'

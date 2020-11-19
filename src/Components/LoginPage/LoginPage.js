@@ -16,12 +16,25 @@ export default class LoginPage extends Component {
 		error: null,
 	};
 
+	usernameRef = React.createRef();
+	passwordRef = React.createRef();
+
 	onInputChange = ev => {
 		const newState = Object.assign({}, this.state);
 		newState[ev.target.name].value = ev.target.value;
 		newState[ev.target.name].touched = true;
 		this.setState(newState);
 	};
+
+	validInputs() {
+		if (
+		!this.state.username.value ||
+		this.state.password.value.length < 8 ||
+		this.state.password.value.length > 72
+		) {
+
+		}
+	}
 
 	onLoginSubmit= (ev) => {
 		ev.preventDefault();
@@ -61,6 +74,7 @@ export default class LoginPage extends Component {
 					/>
 					<button>Log in</button>
 				</form>
+			{!!this.state.error && 	<p>{this.state.error.message}</p>}
 			</div>
 		);
 	}

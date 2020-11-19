@@ -6,12 +6,18 @@
 #create-form {
 	margin: 10px 10%;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 }
 
 #create-form button {
-
+	flex:1;
+	border: solid 1px #4c4c4c;
+	border-radius: 4px;
+	width: 291px;
+	margin-top: 0.5em;
+	height: 2.2em;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 #create-form > * {
@@ -29,6 +35,7 @@
 }
 
 #create-form textarea {
+	font-family: inherit;
 	flex: 3;
 	width: 280px;
 	height: 5em;
@@ -38,11 +45,29 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 .optional-pair input {
 	flex: 1;
 	max-width: 170px;
+}
+
+@media all and (min-width: 730px) {
+
+	.optional-pair {
+		margin-right: 15%;
+		margin-left: 15%;
+	}
+
+}
+
+@media all and (min-width: 1100px) {
+
+	.optional-pair {
+		margin-right: 25%;
+		margin-left: 25%;
+	}
+
 }

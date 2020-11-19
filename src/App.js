@@ -1,7 +1,5 @@
 import  React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import useIdle from 'react-use-idle';
-
 
 import LandingPage from './Components/LandingPage/LandingPage';
 import PageHeader from  './Components/PageHeader/PageHeader';

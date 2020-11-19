@@ -26,7 +26,7 @@ export default class SpellPage extends Component {
     return (
 			<>
 			<article className='spell-page'>
-				<h3>{title}</h3>
+				<h2 className='spell-title'>{title}</h2>
 				<aside>
 					<h4>Author:</h4>
 					<Link to={`/users/${author.username}`}>{author.username}</Link>
@@ -37,7 +37,7 @@ export default class SpellPage extends Component {
 					<p><b>Range:</b> 5ft</p>
 				</section>
 			<p>{description}</p>
-			<div><Link to={`/spells/${id}`}>Copy Link</Link></div>
+			{/*<div><Link to={`/spells/${id}`}>Copy Link</Link></div>*/}
 				</article>
 				<section>
 					{/*// TODO: create comments*/}
