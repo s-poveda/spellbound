@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-		"prebuild":"CI=true npm test",
+		"prebuild":"env CI=true npm test",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
