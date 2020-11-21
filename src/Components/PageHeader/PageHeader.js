@@ -23,7 +23,7 @@ export default class PageHeader extends React.Component {
 			return (
 				<header className='App-header'>
 					<Link className='page-header-title' to='/'>
-						<h1>SpellBound</h1>
+						<h1>SpellRidge</h1>
 					</Link>
 				</header>
 			);
