@@ -10,11 +10,7 @@ const spellsService = {
 		return fetchHandler(`${API_URL}/spells/${id}`);
 	},
 	postSpell(spell) {
-		const body = JSON.stringify({
-			title: spell.title,
-			description: spell.description,
-			optionalFields: spell.optionalFields,
-		});
+		const body = JSON.stringify(spell);
 		const token = tokenService.getAuthToken();
 		return fetchHandler(`${API_URL}/spells`, {
 			method: 'POST',
@@ -26,5 +22,5 @@ const spellsService = {
 		});
 	}
 }
-// eslint-disable-next-line
+
 export default spellsService;

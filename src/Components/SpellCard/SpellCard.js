@@ -20,21 +20,11 @@ export default class SpellCard extends React.Component {
 		}
 	}
 
-// FIXME: make copy work
-	// copyToClipboard = (ev) => {
-	// 	navigator.clipboard
-	// }
-
 	render () {
-		const { id, title, description, author} = this.props.spell;
+		const { title, description, author} = this.props.spell;
 		return (
 			<article className='spell-card' onClick={this.onclick} onKeyPress={this.onKeyPress} tabIndex={0}>
 				<h3>{title}</h3>
-				<section className='spell-card-section'>
-					<p><b>Characteristic:</b> Value</p>
-					<p><b>Damage Type:</b> Necrotic</p>
-					<p><b>Range:</b> 5ft</p>
-				</section>
 				{
 					this.state.expanded &&
 					<>
@@ -42,7 +32,6 @@ export default class SpellCard extends React.Component {
 					{description}
 					</p>
 					<div><Link to={`/users/${author.username}`} className='spell-card-author'>Created by {author.username}</Link></div>
-					{/*<button className='copy-button' onClick={this.copyToClipboard} url={`${window.hostname}/spells/${id}`}>Copy Link</button>*/}
 					</>
 				}
 			</article>

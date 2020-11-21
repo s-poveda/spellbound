@@ -33,7 +33,7 @@ export default class PageHeader extends React.Component {
 				{({ loggedIn, logOut }) => {
 					return (
 						<header className='App-header'>
-							{/* this header will changed based on if user is logged in with Context*/}
+							{/* the sidenav changes depending on whether the user has an auth token stored or not*/}
 							<Link className='page-header-title' to='/'>
 								<h1>SpellRidge</h1>
 							</Link>
@@ -61,7 +61,6 @@ export default class PageHeader extends React.Component {
 									)}
 								</section>
 							</nav>
-							{/* TODO: Make a section with a short intro to the website*/}
 						</header>
 					);
 				}}

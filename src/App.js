@@ -25,19 +25,11 @@ export default class App extends Component {
 	state = {
 		spells: {
 			allSpells: [],
-			// new : [],
-			// popular: [],
-			owned: [],
-			// 'requested' spells are the response of a search
-			requested: [],
-			// 'selected' is used when user clicks on a specific spell card
-			selected: {},
 		},
 		error: null,
 	}
 
 	async componentDidMount() {
-		// TODO: use a 'loading' property in state to display loading spinner
 		await spellsService.getAllSpells()
 			.then( spells => {
 				this.setState({ spells: {
@@ -48,17 +40,24 @@ export default class App extends Component {
 			.catch(error=> this.setState({ error }));
 
 			if (tokenService.hasAuthToken()) {
-				const {sub: username, exp} = tokenService.getPayload();
-				if (new Date(exp) < new Date()) {
-					tokenService.clearAuthToken();
+				const { exp } = tokenService.getPayload();
+				//jwt's expiration is seconds since the epoch
+				//JS uses millisecods, so times secods by 1000
+				if (new Date(exp * 1000) < new Date()) {
+					return tokenService.clearAuthToken();
 				}
-				usersService.getUserProfile(username)
-				.then( data => {
-					const spells = Object.assign({}, this.state.spells);
-					spells.owned = data.spells;
-					this.setState({ spells });
-				});
 			}
+	}
+
+	updateSpellsList = ()=>{
+	 spellsService.getAllSpells()
+			.then( spells => {
+				this.setState({ spells: {
+					allSpells: spells,
+				}
+			});
+			})
+			.catch(error=> this.setState({ error }));
 	}
 
 	renderPublicOnlyMainRoutes() {
@@ -109,6 +108,7 @@ export default class App extends Component {
 			spells: {
 				allSpells: this.state.spells.allSpells,
 			},
+			updateSpellsList: this.updateSpellsList,
 			submitSpell: spellsService.postSpell,
 			getUserProfile: usersService.getUserProfile,
 			getSpell: spellsService.getSpell,

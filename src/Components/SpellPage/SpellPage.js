@@ -22,7 +22,7 @@ export default class SpellPage extends Component {
 	}
 
   render() {
-		const { id,title, description, author = {} } = this.state.spell;
+		const { title, description, author = {} } = this.state.spell;
     return (
 			<>
 			<article className='spell-page'>
@@ -31,17 +31,8 @@ export default class SpellPage extends Component {
 					<h4>Author:</h4>
 					<Link to={`/users/${author.username}`}>{author.username}</Link>
 				</aside>
-				<section className='spell-details-section'>
-					<p><b>Characteristic:</b> Value</p>
-					<p><b>Damage Type:</b> Necrotic</p>
-					<p><b>Range:</b> 5ft</p>
-				</section>
 			<p>{description}</p>
-			{/*<div><Link to={`/spells/${id}`}>Copy Link</Link></div>*/}
 				</article>
-				<section>
-					{/*// TODO: create comments*/}
-				</section>
 				</>
     );
   }
