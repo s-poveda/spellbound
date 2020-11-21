@@ -1,11 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import SpellPage from './SpellPage';
-import renderWithRouter from '../Utils/renderWithRouter';
-
+import { Router } from 'react-router-dom';
+import { render } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
 describe('SpellPage', function () {
 
 	it('renders without crashing', () => {
-			renderWithRouter(<SpellPage />, {route: '/spells/1'});
+			render(<Router history={ createMemoryHistory({ initialEntries: ['/spells/1']}) }>
+				<SpellPage />
+				</Router>
+			);
 	});
 });

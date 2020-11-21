@@ -1,11 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { Router } from 'react-router-dom';
+import { render } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
 import ProfilePage from './ProfilePage';
-import renderWithRouter from '../Utils/renderWithRouter';
 
-describe('ProfilePage', function () {
-
+describe('ProfilePage', function() {
 	it('renders without crashing', () => {
-		renderWithRouter(<ProfilePage match={{ path: '/profile' }}/>, { route: '/profile'});
-	});
+		render(<Router history={ createMemoryHistory({ initialEntries: ['/profile']}) }>
+			<ProfilePage match={{ path: '/profile' }} />
+			</Router>
+		);
+	})
 });

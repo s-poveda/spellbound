@@ -1,11 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PageHeader from './PageHeader';
-import renderWithRouter from '../Utils/renderWithRouter';
-
+import { Router } from 'react-router-dom';
+import { render } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
 describe('PageHeader', function () {
 
 	it('renders without crashing', () => {
-		renderWithRouter(<PageHeader />, { route: '/'})
+		render(<Router history={ createMemoryHistory({ initialEntries: ['/']}) }>
+			<PageHeader match={{ path: '/' }} />
+			</Router>
+		);
 	});
 });
