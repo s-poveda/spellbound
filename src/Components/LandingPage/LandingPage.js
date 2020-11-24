@@ -19,6 +19,14 @@ export  default class LandingPage extends Component {
 						<br/>
 						Want to make your own spell ideas? Sign up!
 					</p>
+					<aside>
+					<p>
+					<strong>Demo User:</strong> <em>Demo User</em>
+					</p>
+					<p>
+					<strong>Demo Password:</strong> <em>DemoPassword1!</em>
+					</p>
+					</aside>
 					<div className='main-content'>
 						<SpellList spells={allSpells} title='Recently Added'/>
 					</div>

@@ -64,7 +64,7 @@ export default class CreateSpellPage extends Component {
 
 		return (
 			<>
-				<h2 className='create-spell-title'>Create</h2>
+				<h2 className='create-spell-title'>Create a New Spell</h2>
 				<form onSubmit={this.submitSpell} id='create-form'>
 					<div>
 						<input
