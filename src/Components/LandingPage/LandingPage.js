@@ -8,7 +8,7 @@ export  default class LandingPage extends Component {
 	render() {
 		return (
 				<ApiContext.Consumer>
-				{ ({spells, loggedIn}) => {
+				{ ({spells}) => {
 				//each spell list return a <section>
 				const { allSpells } = spells;
 				return (
